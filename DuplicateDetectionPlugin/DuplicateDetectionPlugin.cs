@@ -16,6 +16,12 @@ namespace DuplicateDetectionPlugin
             _unsecureConfig = unsecureConfig;
         }
         #endregion
+
+        /// <summary>
+        /// This is the entry point of the plugin.
+        /// </summary>
+        /// <param name="serviceProvider"> Interface of the service provider.</param>
+        /// <exception cref="InvalidPluginExecutionException"> Thorws an exception if there is any issue during the execution.</exception>
         public void Execute(IServiceProvider serviceProvider)
         {
             ITracingService tracer = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
@@ -29,9 +35,9 @@ namespace DuplicateDetectionPlugin
 
                 //TODO: Do stuff
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new InvalidPluginExecutionException(e.Message);
+                throw new InvalidPluginExecutionException(ex.Message);
             }
         }
     }
